@@ -1,7 +1,9 @@
+# import * from './generated/prisma.graphql'
+
 type Mutation {
-  me: String
+  signup(email: String!, password: String!, name: String!): User!
 }
 
 type Query {
-  me: String
+  tempFakeQuery: String
 }
