@@ -4,8 +4,8 @@
   "description": "Backend of Photorice app.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -e js -x node src/index.js",
-    "dev": "nodemon -e js -x node --inspect src/index.js",
+    "start": "nodemon -e js,graphql -x node src/index.js",
+    "dev": "nodemon -e js,graphql -x node --inspect src/index.js",
     "lint": "zeit-eslint --ext .jsx,.js .",
     "lint-staged": "git diff --diff-filter=ACMRT --cached --name-only '*.js' '*.jsx' | xargs zeit-eslint",
     "deploy": "prisma deploy --env-file variables.env"
@@ -32,7 +32,13 @@
   "eslintConfig": {
     "extends": [
       "@zeit/eslint-config-node"
-    ]
+    ],
+    "rules": {
+      "indent": [
+        2,
+        2
+      ]
+    }
   },
   "git": {
     "pre-commit": "lint-staged"
