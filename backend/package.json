@@ -7,7 +7,8 @@
     "start": "nodemon -e js -x node src/index.js",
     "dev": "nodemon -e js -x node --inspect src/index.js",
     "lint": "zeit-eslint --ext .jsx,.js .",
-    "lint-staged": "git diff --diff-filter=ACMRT --cached --name-only '*.js' '*.jsx' | xargs zeit-eslint"
+    "lint-staged": "git diff --diff-filter=ACMRT --cached --name-only '*.js' '*.jsx' | xargs zeit-eslint",
+    "deploy": "prisma deploy --env-file variables.env"
   },
   "author": "Lorenzo Cinque <lore.cinque@gmail.com>",
   "license": "MIT",
