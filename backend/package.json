@@ -1,0 +1,31 @@
+{
+  "name": "photorice-backend",
+  "version": "1.0.0",
+  "description": "Backend of Photorice app.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -e js -x node src/index.js",
+    "dev": "nodemon -e js -x node --inspect src/index.js",
+    "lint": "zeit-eslint --ext .jsx,.js .",
+    "lint-staged": "git diff --diff-filter=ACMRT --cached --name-only '*.js' '*.jsx' | xargs zeit-eslint"
+  },
+  "author": "Lorenzo Cinque <lore.cinque@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@zeit/eslint-config-node": "^0.3.0",
+    "@zeit/git-hooks": "^0.1.4",
+    "babel-preset-env": "^1.7.0",
+    "dotenv": "^6.2.0",
+    "eslint": "^5.10.0",
+    "nodemon": "^1.18.7",
+    "prettier": "^1.15.3"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@zeit/eslint-config-node"
+    ]
+  },
+  "git": {
+    "pre-commit": "lint-staged"
+  }
+}
