@@ -29,17 +29,6 @@
     "prisma": "^1.22.2",
     "prisma-binding": "^2.2.8"
   },
-  "eslintConfig": {
-    "extends": [
-      "@zeit/eslint-config-node"
-    ],
-    "rules": {
-      "indent": [
-        2,
-        2
-      ]
-    }
-  },
   "git": {
     "pre-commit": "lint-staged"
   }

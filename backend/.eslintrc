@@ -1,0 +1,6 @@
+{
+  "extends": ["@zeit/eslint-config-node"],
+  "rules": {
+    "indent": [2, 2]
+  }
+}
