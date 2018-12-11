@@ -1,18 +1,22 @@
 import App, { Container } from 'next/app';
+import { ApolloProvider } from 'react-apollo';
 import Page from '../components/Page';
+import withData from '../utils/withData';
 
 class PhotoriceApp extends App {
   render() {
-    const { Component } = this.props;
+    const { Component, apollo } = this.props;
 
     return (
       <Container>
-        <Page>
-          <Component />
-        </Page>
+        <ApolloProvider client={apollo}>
+          <Page>
+            <Component />
+          </Page>
+        </ApolloProvider>
       </Container>
     );
   }
 }
 
-export default PhotoriceApp;
+export default withData(PhotoriceApp);
