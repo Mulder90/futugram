@@ -1,7 +1,7 @@
 import App, { Container } from 'next/app';
 import Page from '../components/Page';
 
-class Photorice extends App {
+class PhotoriceApp extends App {
   render() {
     const { Component } = this.props;
 
@@ -15,4 +15,4 @@ class Photorice extends App {
   }
 }
 
-export default Photorice;
+export default PhotoriceApp;
