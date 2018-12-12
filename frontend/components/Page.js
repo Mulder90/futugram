@@ -48,7 +48,6 @@ const Content = styled.div`
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
   padding: 2rem;
-  background: beige;
 `;
 
 const Page = props => (

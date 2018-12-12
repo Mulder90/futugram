@@ -38,12 +38,12 @@ const Sperator = styled.span`
 
 const Nav = () => (
   <StyledNav>
-    <Link href="/me">
-      <NavLink>Me</NavLink>
-    </Link>
-    <Sperator>·</Sperator>
     <Link href="/wall">
       <NavLink>Wall</NavLink>
+    </Link>
+    <Sperator>·</Sperator>
+    <Link href="/me">
+      <NavLink>Me</NavLink>
     </Link>
     <Sperator>·</Sperator>
     <Link href="/login">
