@@ -13,3 +13,13 @@ export const REGISTER_MUTATION = gql`
     }
   }
 `;
+
+export const LOGIN_MUTATION = gql`
+  mutation LOGIN_MUTATION($email: String!, $password: String!) {
+    signin(email: $email, password: $password) {
+      id
+      email
+      name
+    }
+  }
+`;

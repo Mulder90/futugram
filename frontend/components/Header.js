@@ -18,6 +18,7 @@ const Logo = styled.h1`
 const StyledHeader = styled.header`
   display: flex;
   align-items: center;
+  margin-top: 0.5rem;
 `;
 
 const Header = () => (

@@ -1,5 +1,7 @@
 import Link from 'next/link';
+import { Fragment } from 'react';
 import styled from 'styled-components';
+import User from './User';
 
 const StyledNav = styled.div`
   margin-left: auto;
@@ -37,27 +39,39 @@ const Sperator = styled.span`
 `;
 
 const Nav = () => (
-  <StyledNav>
-    <Link href="/wall">
-      <NavLink>Wall</NavLink>
-    </Link>
-    <Sperator>·</Sperator>
-    <Link href="/me">
-      <NavLink>Me</NavLink>
-    </Link>
-    <Sperator>·</Sperator>
-    <Link href="/login">
-      <NavLink>Login</NavLink>
-    </Link>
-    <Sperator>·</Sperator>
-    <Link href="/register">
-      <NavLink>Register</NavLink>
-    </Link>
-    <Sperator>·</Sperator>
-    <Link href="/logout">
-      <NavLink>Logout</NavLink>
-    </Link>
-  </StyledNav>
+  <User>
+    {({ data: { me } }) => (
+      <StyledNav>
+        <Link href="/wall">
+          <NavLink>Wall</NavLink>
+        </Link>
+        <Sperator>·</Sperator>
+        {me && (
+          <Fragment>
+            <Link href="/me">
+              <NavLink>{me.name}</NavLink>
+            </Link>
+            <Sperator>·</Sperator>
+            <Link href="/logout">
+              <NavLink>Logout</NavLink>
+            </Link>
+          </Fragment>
+        )}
+
+        {!me && (
+          <Fragment>
+            <Link href="/login">
+              <NavLink>Login</NavLink>
+            </Link>
+            <Sperator>·</Sperator>
+            <Link href="/register">
+              <NavLink>Register</NavLink>
+            </Link>
+          </Fragment>
+        )}
+      </StyledNav>
+    )}
+  </User>
 );
 
 export default Nav;
