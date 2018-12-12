@@ -3,7 +3,7 @@ import { ServerStyleSheet } from 'styled-components';
 
 // XXX: Walk the component tree and collect all the styles.
 // This fix the blinking on reload.
-export default class PhotoriceDocument extends Document {
+export default class FutugramDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
 

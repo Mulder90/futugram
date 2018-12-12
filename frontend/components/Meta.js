@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { APP_NAME } from '../config';
 
 const Meta = () => (
   <Head>
@@ -11,7 +12,7 @@ const Meta = () => (
       type="text/css"
       href="//fonts.googleapis.com/css?family=Open+Sans"
     />
-    <title>Photorice</title>
+    <title>{APP_NAME}</title>
   </Head>
 );
 

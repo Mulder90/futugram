@@ -3,7 +3,7 @@ import { ApolloProvider } from 'react-apollo';
 import Page from '../components/Page';
 import withData from '../utils/withData';
 
-class PhotoriceApp extends App {
+class FutugramApp extends App {
   render() {
     const { Component, apollo } = this.props;
 
@@ -19,4 +19,4 @@ class PhotoriceApp extends App {
   }
 }
 
-export default withData(PhotoriceApp);
+export default withData(FutugramApp);

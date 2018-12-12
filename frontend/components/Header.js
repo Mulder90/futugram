@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import Nav from './Nav';
+import { APP_NAME } from '../config';
 
 const Logo = styled.h1`
   font-size: 2.6rem;
@@ -23,7 +24,7 @@ const Header = () => (
   <StyledHeader>
     <Logo>
       <Link href="/">
-        <a>Photorice</a>
+        <a>{APP_NAME}</a>
       </Link>
     </Logo>
     <Nav />
