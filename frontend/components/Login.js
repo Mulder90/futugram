@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { LOGIN_MUTATION } from '../mutations/auth_mutations';
 import { CURRENT_USER_QUERY } from '../queries/auth_queries';
 import Form from './styles/Form';
-import FormAlternative from './styles/FormAlternative';
+import FormFooter from './styles/FormFooter';
 
 class Login extends Component {
   state = {
@@ -62,13 +62,13 @@ class Login extends Component {
                 <button type="submit">Login</button>
               </fieldset>
             </Form>
-            <FormAlternative>
+            <FormFooter>
               Or
               <br />
               <Link href="/register">
                 <a> Create a new account</a>
               </Link>
-            </FormAlternative>
+            </FormFooter>
           </React.Fragment>
         )}
       </Mutation>
