@@ -4,3 +4,9 @@ type User {
   email: String! @unique
   password: String!
 }
+
+type Photo {
+  id: ID! @unique
+  image: String!
+  user: User!
+}

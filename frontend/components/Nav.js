@@ -28,6 +28,10 @@ const Nav = () => (
               <NavLink>{me.name}</NavLink>
             </Link>
             <NavSeparator>·</NavSeparator>
+            <Link href="/upload">
+              <NavLink>Upload</NavLink>
+            </Link>
+            <NavSeparator>·</NavSeparator>
             <Logout />
           </Fragment>
         )}

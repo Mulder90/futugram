@@ -57,6 +57,28 @@ const Mutations = {
     return {
       message: 'Successfully logging out.'
     };
+  },
+
+  async uploadPhoto(_parent, args, ctx, info) {
+    if (!ctx.request.userId) {
+      throw new Error('You must be logged in to upload a photo.');
+    }
+
+    const photo = await ctx.db.mutation.createPhoto(
+      {
+        data: {
+          user: {
+            connect: {
+              id: ctx.request.userId
+            }
+          },
+          ...args
+        }
+      },
+      info
+    );
+
+    return photo;
   }
 };
 

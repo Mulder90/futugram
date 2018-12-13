@@ -1,3 +1,5 @@
+const { forwardTo } = require('prisma-binding');
+
 const Query = {
   me(_parent, _args, ctx, info) {
     if (!ctx.request.userId) {
@@ -12,7 +14,9 @@ const Query = {
       },
       info
     );
-  }
+  },
+
+  photos: forwardTo('db')
 };
 
 module.exports = Query;
