@@ -28,13 +28,13 @@ class Login extends Component {
         variables={this.state}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
       >
-        {(singin, { error, loading }) => (
+        {(signin, { error, loading }) => (
           <React.Fragment>
             <Form
               method="post"
               onSubmit={async e => {
                 e.preventDefault();
-                await singin();
+                await signin();
                 Router.push({ pathname: '/me' });
               }}
             >
