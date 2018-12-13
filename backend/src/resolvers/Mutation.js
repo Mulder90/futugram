@@ -49,6 +49,14 @@ const Mutations = {
     });
 
     return user;
+  },
+
+  signout(_parent, _args, ctx, _info) {
+    ctx.response.clearCookie('token');
+
+    return {
+      message: 'Successfully logging out.'
+    };
   }
 };
 

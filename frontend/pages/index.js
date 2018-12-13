@@ -1,1 +1,1 @@
-export default () => <div>Home Page</div>;
+export default () => <div>Wall</div>;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Router from 'next/router';
 import { Mutation } from 'react-apollo';
 import Link from 'next/link';
 import { LOGIN_MUTATION } from '../mutations/auth_mutations';
@@ -34,7 +35,7 @@ class Login extends Component {
               onSubmit={async e => {
                 e.preventDefault();
                 await singin();
-                this.setState({ email: '', password: '' });
+                Router.push({ pathname: '/me' });
               }}
             >
               <fieldset disabled={loading} aria-busy={loading}>
