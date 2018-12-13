@@ -1,6 +1,7 @@
 datamodel: datamodel.prisma
-endpoint: ${env:PRISMA_ENDPOINT}
-# secret: ${env:PRISMA_SECRET}
+#endpoint: ${env:PRISMA_ENDPOINT}
+endpoint: https://futugram-production-6b178e79f4.herokuapp.com/futugram-production/prod
+secret: ${env:PRISMA_SECRET}
 
 generate:
   - generator: graphql-schema
