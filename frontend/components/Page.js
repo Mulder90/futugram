@@ -9,6 +9,7 @@ initNProgress();
 const theme = {
   green: '#2ecc71',
   black: '#393939',
+  red: 'crimson',
   maxWidth: '1000px',
   fontFamily: 'Open Sans'
 };

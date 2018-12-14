@@ -1,7 +1,12 @@
 import Upload from '../components/Upload';
+import PleaseSignIn from '../components/PleaseSignIn';
 
-export default () => (
+const UploadPage = () => (
   <div>
-    <Upload />
+    <PleaseSignIn>
+      <Upload />
+    </PleaseSignIn>
   </div>
 );
+
+export default UploadPage;

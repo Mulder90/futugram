@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Router from 'next/router';
 import { Mutation } from 'react-apollo';
 import Link from 'next/link';
 import { REGISTER_MUTATION } from '../mutations/auth_mutations';
@@ -36,7 +35,6 @@ class Register extends Component {
               onSubmit={async e => {
                 e.preventDefault();
                 await signup();
-                Router.push({ pathname: '/me' });
               }}
             >
               <fieldset disabled={loading} aria-busy={loading}>

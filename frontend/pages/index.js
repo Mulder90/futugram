@@ -1,1 +1,3 @@
-export default () => <div>Wall</div>;
+const WallPage = () => <div>Wall</div>;
+
+export default WallPage;
