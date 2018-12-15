@@ -1,12 +1,14 @@
 import gql from 'graphql-tag';
 
-export const PHOTOS_QUERY = gql`
-  query {
-    id
-    image
-    user {
+export const ALL_PHOTOS_QUERY = gql`
+  query ALL_PHOTOS_QUERY {
+    photos {
       id
-      name
+      image
+      user {
+        id
+        name
+      }
     }
   }
 `;

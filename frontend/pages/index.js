@@ -1,3 +1,3 @@
-const WallPage = () => <div>Wall</div>;
+import Wall from './wall';
 
-export default WallPage;
+export default Wall;

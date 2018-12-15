@@ -56,6 +56,11 @@ const Form = styled.form`
     cursor: pointer;
   }
 
+  button:disabled {
+    background: ${props => props.theme.grey};
+    cursor: default;
+  }
+
   fieldset {
     border: 0;
     padding: 0;
