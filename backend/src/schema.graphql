@@ -13,5 +13,5 @@ type Mutation {
 
 type Query {
   me: User
-  photos: [Photo]!
+  photos(where: PhotoWhereInput): [Photo]!
 }
