@@ -1,4 +1,5 @@
 import { Mutation } from 'react-apollo';
+import Router from 'next/router';
 import { LOGOUT_MUTATION } from '../mutations/auth_mutations';
 import { CURRENT_USER_QUERY } from '../queries/auth_queries';
 import NavLink from './styles/NavLink';
@@ -12,6 +13,7 @@ const Logout = () => (
       <NavLink
         onClick={async () => {
           await signout();
+          Router.push('/wall');
         }}
       >
         Logout
