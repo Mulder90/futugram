@@ -8,6 +8,7 @@ const Logout = () => (
   <Mutation
     mutation={LOGOUT_MUTATION}
     refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+    awaitRefetchQueries={true}
   >
     {signout => (
       <NavLink

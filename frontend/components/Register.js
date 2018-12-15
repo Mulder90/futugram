@@ -28,6 +28,7 @@ class Register extends Component {
         mutation={REGISTER_MUTATION}
         variables={this.state}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+        awaitRefetchQueries={true}
       >
         {(signup, { error, loading }) => (
           <React.Fragment>
