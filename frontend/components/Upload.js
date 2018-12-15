@@ -4,8 +4,10 @@ import { Mutation } from 'react-apollo';
 import { withTheme } from 'styled-components';
 import { BounceLoader } from 'react-spinners';
 import { css } from 'react-emotion';
-import { UPLOAD_PHOTO_MUTATION } from '../mutations/photo_mutations';
 import Form from './styles/Form';
+import Error from './ErrorMessage';
+import { UPLOAD_PHOTO_MUTATION } from '../mutations/photo_mutations';
+import { ALL_MY_PHOTOS_QUERY } from '../queries/photo_queries';
 import { CLOUDINARY_PRESET_NAME, CLOUDINARY_UPLOAD_API } from '../config';
 
 const overrideBounceLoaderCSS = css`
@@ -42,20 +44,30 @@ class Upload extends Component {
 
   render() {
     const { image, uploading } = this.state;
+    const { user } = this.props;
     return (
-      // TODO: Handle errors
-      <Mutation mutation={UPLOAD_PHOTO_MUTATION} variables={this.state}>
+      <Mutation
+        mutation={UPLOAD_PHOTO_MUTATION}
+        variables={this.state}
+        refetchQueries={[
+          {
+            query: ALL_MY_PHOTOS_QUERY,
+            variables: user
+          }
+        ]}
+      >
         {(uploadPhoto, { error, loading }) => (
           <Form
             method="post"
             onSubmit={async e => {
               e.preventDefault();
               await uploadPhoto();
-              Router.push('/wall');
+              Router.push('/me');
             }}
           >
             <fieldset disabled={loading} aria-busy={loading}>
               <h2>{uploading ? 'Uploading' : 'Upload an Image'}</h2>
+              <Error error={error} />
               {uploading && (
                 <BounceLoader
                   className={overrideBounceLoaderCSS}

@@ -11,9 +11,10 @@ const Logout = () => (
   >
     {signout => (
       <NavLink
-        onClick={async () => {
+        onClick={async e => {
+          e.preventDefault();
           await signout();
-          Router.push('/wall');
+          Router.push('/');
         }}
       >
         Logout

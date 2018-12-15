@@ -35,7 +35,7 @@ class Login extends Component {
               onSubmit={async e => {
                 e.preventDefault();
                 await signin();
-                Router.push('/wall');
+                Router.push('/me');
               }}
             >
               <fieldset disabled={loading} aria-busy={loading}>

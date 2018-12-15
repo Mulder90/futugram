@@ -36,7 +36,7 @@ class Register extends Component {
               onSubmit={async e => {
                 e.preventDefault();
                 await signup();
-                Router.push('/wall');
+                Router.push('/me');
               }}
             >
               <fieldset disabled={loading} aria-busy={loading}>

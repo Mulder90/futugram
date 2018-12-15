@@ -4,9 +4,9 @@
   "description": "Frontend of Photorice app.",
   "main": "index.js",
   "scripts": {
-    "dev": "next -p 7777",
+    "dev": "NODE_ENV=development next -p 7777",
     "build": "next build",
-    "start": "next start -p $PORT",
+    "start": "NODE_ENV=production next start -p $PORT",
     "test": "NODE_ENV=test jest --watch",
     "heroku-postbuild": "next build"
   },

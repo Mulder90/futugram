@@ -17,18 +17,17 @@ const Nav = () => (
   <User>
     {({ data: { me } }) => (
       <StyledNav>
-        <Link href="/wall">
-          <NavLink>Wall</NavLink>
-        </Link>
-        <NavSeparator>·</NavSeparator>
-
         {me && (
           <Fragment>
-            <Link href="/me">
+            <Link prefetch href="/wall">
+              <NavLink>Wall</NavLink>
+            </Link>
+            <NavSeparator>·</NavSeparator>
+            <Link prefetch href="/me">
               <NavLink>{me.name}</NavLink>
             </Link>
             <NavSeparator>·</NavSeparator>
-            <Link href="/upload">
+            <Link prefetch href="/upload">
               <NavLink>Upload</NavLink>
             </Link>
             <NavSeparator>·</NavSeparator>
@@ -38,11 +37,11 @@ const Nav = () => (
 
         {!me && (
           <Fragment>
-            <Link href="/login">
+            <Link prefetch href="/login">
               <NavLink>Login</NavLink>
             </Link>
             <NavSeparator>·</NavSeparator>
-            <Link href="/register">
+            <Link prefetch href="/register">
               <NavLink>Register</NavLink>
             </Link>
           </Fragment>
