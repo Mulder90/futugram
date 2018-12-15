@@ -1,32 +1,57 @@
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { PASSWORD_SALT_LENGTH, COOKIE_MAX_AGE } = require('../config');
+const {
+  PASSWORD_SALT_LENGTH,
+  COOKIE_MAX_AGE,
+  PASSWORD_MIN_LENGTH
+} = require('../config');
 
 const Mutations = {
   async signup(_parent, args, ctx, info) {
-    args.email = args.email.toLowerCase();
-    const password = await bcryptjs.hash(args.password, PASSWORD_SALT_LENGTH);
-    const user = await ctx.db.mutation.createUser(
-      {
-        data: {
-          ...args,
-          password
-        }
-      },
-      info
-    );
+    const { email, name, password } = args;
+    args.email = email.toLowerCase();
 
-    const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
+    if (email === '' || name === '' || password === '') {
+      throw new Error('Fields cannot be empty');
+    }
 
-    ctx.response.cookie('token', token, {
-      httpOnly: true,
-      maxAge: COOKIE_MAX_AGE
-    });
+    if (password.length < PASSWORD_MIN_LENGTH) {
+      throw new Error(
+        `Please provide a password with a length of at least ${PASSWORD_MIN_LENGTH}`
+      );
+    }
 
-    return user;
+    const saltedPassword = await bcryptjs.hash(password, PASSWORD_SALT_LENGTH);
+
+    try {
+      const user = await ctx.db.mutation.createUser(
+        {
+          data: {
+            ...args,
+            password: saltedPassword
+          }
+        },
+        info
+      );
+
+      const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
+
+      ctx.response.cookie('token', token, {
+        httpOnly: true,
+        maxAge: COOKIE_MAX_AGE
+      });
+
+      return user;
+    } catch (error) {
+      throw new Error(`${email} is already used. Please try a different one.`);
+    }
   },
 
   async signin(parent, { email, password }, ctx, info) {
+    if (email === '' || password === '') {
+      throw new Error('Fields cannot be empty');
+    }
+
     const user = await ctx.db.query.user({
       where: {
         email

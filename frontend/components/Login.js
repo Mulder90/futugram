@@ -5,6 +5,7 @@ import { LOGIN_MUTATION } from '../mutations/auth_mutations';
 import { CURRENT_USER_QUERY } from '../queries/auth_queries';
 import Form from './styles/Form';
 import FormFooter from './styles/FormFooter';
+import Error from './ErrorMessage';
 
 class Login extends Component {
   state = {
@@ -21,7 +22,6 @@ class Login extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      // TODO: Handle errors
       <Mutation
         mutation={LOGIN_MUTATION}
         variables={this.state}
@@ -38,6 +38,7 @@ class Login extends Component {
             >
               <fieldset disabled={loading} aria-busy={loading}>
                 <h2>Login to Futugram</h2>
+                <Error error={error} />
                 <label htmlFor="email">
                   Email
                   <input
