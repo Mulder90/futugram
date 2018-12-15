@@ -54,6 +54,7 @@ class Upload extends Component {
               <label htmlFor="image">
                 <input
                   type="file"
+                  accept="image/*"
                   name="image"
                   required
                   onChange={this.handleFileChange}
