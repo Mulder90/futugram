@@ -6,7 +6,8 @@
       {
         "ssr": true,
         "displayName": true
-      }
+      },
+      "emotion"
     ]
   ]
 }
