@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import { CURRENT_USER_QUERY } from '../queries/auth_queries';
 import Login from './Login';
 
-const PleaseSignInMessage = styled.p`
+const PrivatePageMessage = styled.p`
   text-align: center;
   font-size: 2rem;
   font-weight: bold;
   color: ${props => props.theme.red};
 `;
 
-const PleaseSignIn = props => (
+const PrivatePage = props => (
   <Query query={CURRENT_USER_QUERY}>
     {({ data, loading }) => {
       if (loading) {
@@ -20,9 +20,7 @@ const PleaseSignIn = props => (
       if (!data.me) {
         return (
           <div>
-            <PleaseSignInMessage>
-              Please Sign In to continue
-            </PleaseSignInMessage>
+            <PrivatePageMessage>Please Sign In to continue</PrivatePageMessage>
             <Login />
           </div>
         );
@@ -33,4 +31,4 @@ const PleaseSignIn = props => (
   </Query>
 );
 
-export default PleaseSignIn;
+export default PrivatePage;

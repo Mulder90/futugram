@@ -1,15 +1,15 @@
-import PleaseSignIn from '../components/PleaseSignIn';
+import PrivatePage from '../components/PrivatePage';
 import Photos from '../components/Photos';
 import User from '../components/User';
 import { ALL_MY_PHOTOS_QUERY } from '../queries/photo_queries';
 
 const ProfilePage = () => (
   <div>
-    <PleaseSignIn>
+    <PrivatePage>
       <User>
         {({ data: { me } }) => <Photos user={me} query={ALL_MY_PHOTOS_QUERY} />}
       </User>
-    </PleaseSignIn>
+    </PrivatePage>
   </div>
 );
 

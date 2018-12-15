@@ -1,12 +1,12 @@
 import Upload from '../components/Upload';
 import User from '../components/User';
-import PleaseSignIn from '../components/PleaseSignIn';
+import PrivatePage from '../components/PrivatePage';
 
 const UploadPage = () => (
   <div>
-    <PleaseSignIn>
+    <PrivatePage>
       <User>{({ data: { me } }) => <Upload user={me} />}</User>
-    </PleaseSignIn>
+    </PrivatePage>
   </div>
 );
 
