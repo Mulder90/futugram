@@ -22,6 +22,8 @@ const Nav = () => (
             <NavSeparator>·</NavSeparator>
             <NavLink href="/me">{me.name}</NavLink>
             <NavSeparator>·</NavSeparator>
+            <NavLink href="/map">Map</NavLink>
+            <NavSeparator>·</NavSeparator>
             <NavLink href="/upload">Upload</NavLink>
             <NavSeparator>·</NavSeparator>
             <Logout />

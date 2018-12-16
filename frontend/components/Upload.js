@@ -7,7 +7,7 @@ import { css } from 'react-emotion';
 import Form from './styles/Form';
 import Error from './ErrorMessage';
 import { UPLOAD_PHOTO_MUTATION } from '../mutations/photo_mutations';
-import { ALL_MY_PHOTOS_QUERY } from '../queries/photo_queries';
+import { ALL_MY_PAGINATED_PHOTOS_QUERY } from '../queries/photo_queries';
 import { CLOUDINARY_PRESET_NAME, CLOUDINARY_UPLOAD_API } from '../config';
 
 const overrideBounceLoaderCSS = css`
@@ -58,7 +58,7 @@ class Upload extends Component {
         variables={this.state}
         refetchQueries={[
           {
-            query: ALL_MY_PHOTOS_QUERY,
+            query: ALL_MY_PAGINATED_PHOTOS_QUERY,
             variables: user
           }
         ]}
