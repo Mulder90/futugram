@@ -5,6 +5,7 @@ const {
   COOKIE_MAX_AGE,
   PASSWORD_MIN_LENGTH
 } = require('../config');
+const geocoder = require('../utils/geocoder');
 
 const Mutations = {
   async signup(_parent, args, ctx, info) {
@@ -85,23 +86,47 @@ const Mutations = {
   },
 
   async uploadPhoto(_parent, args, ctx, info) {
+    const location = args.location || '';
+    let latitude = 0.0;
+    let longitude = 0.0;
+
     if (!ctx.request.userId) {
       throw new Error('You must be logged in to upload a photo.');
     }
 
-    const photo = await ctx.db.mutation.createPhoto(
-      {
-        data: {
-          user: {
-            connect: {
-              id: ctx.request.userId
-            }
-          },
-          ...args
+    const data = {
+      user: {
+        connect: {
+          id: ctx.request.userId
         }
       },
-      info
-    );
+      image: args.image
+    };
+
+    if (location) {
+      const locationInfo = await geocoder.geocode(location);
+      if (locationInfo.length > 0) {
+        if (locationInfo[0].latitude) {
+          latitude = locationInfo[0].latitude;
+        }
+
+        if (locationInfo[0].longitude) {
+          longitude = locationInfo[0].longitude;
+        }
+
+        data = Object.assign(data, {
+          location: {
+            create: {
+              city: location,
+              latitude: latitude,
+              longitude: longitude
+            }
+          }
+        });
+      }
+    }
+
+    const photo = await ctx.db.mutation.createPhoto({ data: data }, info);
 
     return photo;
   }

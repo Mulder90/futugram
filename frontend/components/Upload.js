@@ -17,6 +17,7 @@ const overrideBounceLoaderCSS = css`
 class Upload extends Component {
   state = {
     image: '',
+    location: '',
     uploading: false
   };
 
@@ -42,8 +43,14 @@ class Upload extends Component {
     });
   };
 
+  handleLocationChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
   render() {
-    const { image, uploading } = this.state;
+    const { image, location, uploading } = this.state;
     const { user } = this.props;
     return (
       <Mutation
@@ -84,6 +91,16 @@ class Upload extends Component {
                   name="image"
                   required
                   onChange={this.handleFileChange}
+                />
+              </label>
+              <label htmlFor="location">
+                City
+                <input
+                  type="text"
+                  name="location"
+                  placeholder="Florence"
+                  onChange={this.handleLocationChange}
+                  value={location}
                 />
               </label>
               <button type="submit" disabled={image.length === 0}>

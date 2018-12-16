@@ -3,10 +3,21 @@ type User {
   name: String!
   email: String! @unique
   password: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type Photo {
   id: ID! @unique
   image: String!
   user: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  location: Location
+}
+
+type Location {
+  city: String!
+  latitude: Float!
+  longitude: Float!
 }
