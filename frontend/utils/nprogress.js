@@ -4,17 +4,17 @@ import NProgress from 'nprogress';
 const initNProgress = () => {
   NProgress.configure({ showSpinner: false });
 
-  Router.onRouteChangeStart = () => {
+  Router.events.on('routeChangeStart', () => {
     NProgress.start();
-  };
+  });
 
-  Router.onRouteChangeComplete = () => {
+  Router.events.on('routeChangeComplete', () => {
     NProgress.done();
-  };
+  });
 
-  Router.onRouteChangeError = () => {
+  Router.events.on('routeChangeError', () => {
     NProgress.done();
-  };
+  });
 };
 
 export default initNProgress;
