@@ -18,7 +18,8 @@ class Upload extends Component {
   state = {
     image: '',
     location: '',
-    uploading: false
+    uploading: false,
+    uploadingError: false
   };
 
   handleFileChange = async e => {
@@ -28,7 +29,8 @@ class Upload extends Component {
     data.append('upload_preset', CLOUDINARY_PRESET_NAME);
 
     this.setState({
-      uploading: true
+      uploading: true,
+      uploadingError: false
     });
 
     const response = await fetch(CLOUDINARY_UPLOAD_API, {
@@ -36,11 +38,26 @@ class Upload extends Component {
       body: data
     });
 
-    const file = await response.json();
-    this.setState({
-      image: file.secure_url,
-      uploading: false
-    });
+    try {
+      const file = await response.json();
+
+      if (file.error) {
+        this.setState({
+          uploading: false,
+          uploadingError: true
+        });
+      } else {
+        this.setState({
+          image: file.secure_url,
+          uploading: false
+        });
+      }
+    } catch (error) {
+      this.setState({
+        uploading: false,
+        uploadingError: true
+      });
+    }
   };
 
   handleLocationChange = e => {
@@ -50,7 +67,7 @@ class Upload extends Component {
   };
 
   render() {
-    const { image, location, uploading } = this.state;
+    const { image, location, uploading, uploadingError } = this.state;
     const { user } = this.props;
     return (
       <Mutation
@@ -76,6 +93,14 @@ class Upload extends Component {
             <fieldset disabled={loading} aria-busy={loading}>
               <h2>{uploading ? 'Uploading' : 'Upload an Image'}</h2>
               <Error error={error} />
+              {uploadingError && (
+                <Error
+                  error={{
+                    message:
+                      'A problem occurs while uploading your photo. Please check that the file size is under 10MB'
+                  }}
+                />
+              )}
               {uploading && (
                 <BounceLoader
                   className={overrideBounceLoaderCSS}
