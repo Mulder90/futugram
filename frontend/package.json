@@ -1,7 +1,7 @@
 {
-  "name": "photorice-frontend",
+  "name": "futugram-frontend",
   "version": "1.0.0",
-  "description": "Frontend of Photorice app.",
+  "description": "Frontend of futugram.",
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=development next -p 7777",
