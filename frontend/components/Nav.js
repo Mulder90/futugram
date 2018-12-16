@@ -1,9 +1,8 @@
-import Link from 'next/link';
 import { Fragment } from 'react';
 import styled from 'styled-components';
 import User from './User';
 import Logout from './Logout';
-import NavLink from './styles/NavLink';
+import NavLink from './NavLink';
 import NavSeparator from './styles/NavSeparator';
 
 const StyledNav = styled.div`
@@ -19,17 +18,11 @@ const Nav = () => (
       <StyledNav>
         {me && (
           <Fragment>
-            <Link prefetch href="/wall">
-              <NavLink>Wall</NavLink>
-            </Link>
+            <NavLink href="/wall">Wall</NavLink>
             <NavSeparator>·</NavSeparator>
-            <Link prefetch href="/me">
-              <NavLink>{me.name}</NavLink>
-            </Link>
+            <NavLink href="/me">{me.name}</NavLink>
             <NavSeparator>·</NavSeparator>
-            <Link prefetch href="/upload">
-              <NavLink>Upload</NavLink>
-            </Link>
+            <NavLink href="/upload">Upload</NavLink>
             <NavSeparator>·</NavSeparator>
             <Logout />
           </Fragment>
@@ -37,13 +30,9 @@ const Nav = () => (
 
         {!me && (
           <Fragment>
-            <Link prefetch href="/login">
-              <NavLink>Login</NavLink>
-            </Link>
+            <NavLink href="/login">Login</NavLink>
             <NavSeparator>·</NavSeparator>
-            <Link prefetch href="/register">
-              <NavLink>Register</NavLink>
-            </Link>
+            <NavLink href="/register">Register</NavLink>
           </Fragment>
         )}
       </StyledNav>

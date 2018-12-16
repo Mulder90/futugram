@@ -27,7 +27,7 @@ class Login extends Component {
         mutation={LOGIN_MUTATION}
         variables={this.state}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
-        awaitRefetchQueries={true}
+        awaitRefetchQueries
       >
         {(signin, { error, loading }) => (
           <React.Fragment>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const NavLink = styled.a`
+const NavLinkStyle = styled.a`
   font-size: 1.5rem;
   font-weight: 600;
   cursor: pointer;
@@ -17,9 +17,10 @@ const NavLink = styled.a`
     transition: width 0.1s;
   }
 
+  &.active:after,
   &:hover:after {
     width: 100%;
   }
 `;
 
-export default NavLink;
+export default NavLinkStyle;

@@ -55,7 +55,7 @@ class Upload extends Component {
             variables: user
           }
         ]}
-        awaitRefetchQueries={true}
+        awaitRefetchQueries
       >
         {(uploadPhoto, { error, loading }) => (
           <Form
