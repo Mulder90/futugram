@@ -2,12 +2,21 @@ import PrivatePage from '../components/PrivatePage';
 import Photos from '../components/Photos';
 import User from '../components/User';
 import { ALL_MY_PHOTOS_QUERY } from '../queries/photo_queries';
+import { MY_PAGINATION_QUERY } from '../queries/pagination_queries';
 
-const ProfilePage = () => (
+const ProfilePage = props => (
   <div>
     <PrivatePage>
       <User>
-        {({ data: { me } }) => <Photos user={me} query={ALL_MY_PHOTOS_QUERY} />}
+        {({ data: { me } }) => (
+          <Photos
+            page={parseFloat(props.query.page) || 1}
+            path="me"
+            user={me}
+            photoQuery={ALL_MY_PHOTOS_QUERY}
+            paginationQuery={MY_PAGINATION_QUERY}
+          />
+        )}
       </User>
     </PrivatePage>
   </div>

@@ -16,7 +16,8 @@ const Query = {
     );
   },
 
-  photos: forwardTo('db')
+  photos: forwardTo('db'),
+  photosConnection: forwardTo('db')
 };
 
 module.exports = Query;

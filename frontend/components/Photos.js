@@ -1,6 +1,8 @@
 import { Query } from 'react-apollo';
 import styled from 'styled-components';
 import Photo from './Photo';
+import Pagination from './Pagination';
+import { PER_PAGE } from '../config';
 
 const Center = styled.div`
   text-align: center;
@@ -15,27 +17,43 @@ const PhotosList = styled.div`
 `;
 
 const Photos = props => {
-  const { query, user } = props;
-  return (
-    <Center>
-      <Query query={query} variables={user}>
-        {({ data, error, loading }) => {
-          if (loading) return <p>Loading...</p>;
-          if (error) return <p>Error: {error.message}.</p>;
-          if (data.photos)
-            return (
-              <PhotosList>
-                {data.photos.map(photo => (
-                  <Photo photo={photo} key={photo.id} />
-                ))}
-              </PhotosList>
-            );
+  const { photoQuery, paginationQuery, user, page, path } = props;
+  if (user) {
+    return (
+      <Center>
+        <Query
+          query={photoQuery}
+          variables={{
+            id: user.id,
+            skip: page * PER_PAGE - PER_PAGE
+          }}
+        >
+          {({ data, error, loading }) => {
+            if (loading) return <p>Loading...</p>;
+            if (error) return <p>Error: {error.message}.</p>;
+            if (data.photos)
+              return (
+                <PhotosList>
+                  {data.photos.map(photo => (
+                    <Photo photo={photo} key={photo.id} />
+                  ))}
+                </PhotosList>
+              );
 
-          return null;
-        }}
-      </Query>
-    </Center>
-  );
+            return null;
+          }}
+        </Query>
+        <Pagination
+          query={paginationQuery}
+          user={user}
+          page={page}
+          path={path}
+        />
+      </Center>
+    );
+  }
+
+  return null;
 };
 
 export default Photos;
