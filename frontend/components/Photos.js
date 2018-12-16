@@ -1,9 +1,20 @@
 import { Query } from 'react-apollo';
+import Link from 'next/link';
 import styled from 'styled-components';
 import Photo from './Photo';
 import Pagination from './Pagination';
 import { PER_PAGE } from '../config';
 import Center from './styles/Center';
+import { Fragment } from 'react';
+
+const NoPhotos = styled.div`
+  font-size: 1.5rem;
+
+  a {
+    text-decoration: underline;
+    font-weight: 600;
+  }
+`;
 
 const PhotosList = styled.div`
   display: grid;
@@ -30,17 +41,36 @@ const Photos = props => {
             if (error) return <p>Error: {error.message}.</p>;
             if (data.photos)
               return (
-                <PhotosList>
-                  {data.photos.map(photo => (
-                    <Photo photo={photo} key={photo.id} />
-                  ))}
-                </PhotosList>
+                <Fragment>
+                  {data.photos.length === 0 && (
+                    <NoPhotos>
+                      To start share your photos please go to the
+                      <Link href="/upload">
+                        <a> upload </a>
+                      </Link>
+                      section.
+                    </NoPhotos>
+                  )}
+                  {data.photos.length > 0 && (
+                    <Fragment>
+                      <PhotosList>
+                        {data.photos.map(photo => (
+                          <Photo photo={photo} key={photo.id} />
+                        ))}
+                      </PhotosList>
+                      <Pagination
+                        query={paginationQuery}
+                        user={user}
+                        page={page}
+                      />
+                    </Fragment>
+                  )}
+                </Fragment>
               );
 
             return null;
           }}
         </Query>
-        <Pagination query={paginationQuery} user={user} page={page} />
       </Center>
     );
   }
