@@ -6,6 +6,9 @@ export const ALL_MY_PHOTOS_QUERY = gql`
     photos(where: { user: { id: $id } }, first: $first, skip: $skip, orderBy: createdAt_DESC) {
       image
       id
+      location {
+        city
+      }
     }
   }
 `;
@@ -15,6 +18,9 @@ export const ALL_OTHERS_PHOTOS_QUERY = gql`
     photos(where: { user: { id_not: $id } }, first: $first, skip: $skip, orderBy: createdAt_DESC) {
       image
       id
+      location {
+        city
+      }
     }
   }
 `;

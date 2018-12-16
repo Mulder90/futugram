@@ -94,7 +94,7 @@ const Mutations = {
       throw new Error('You must be logged in to upload a photo.');
     }
 
-    const data = {
+    let data = {
       user: {
         connect: {
           id: ctx.request.userId
