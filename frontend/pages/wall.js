@@ -10,7 +10,6 @@ const Wall = props => (
       {({ data: { me } }) => (
         <Photos
           page={parseFloat(props.query.page) || 1}
-          path="wall"
           user={me}
           photoQuery={ALL_OTHERS_PHOTOS_QUERY}
           paginationQuery={OTHERS_PAGINATION_QUERY}

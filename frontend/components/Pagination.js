@@ -1,11 +1,12 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import Link from 'next/link';
+import { withRouter } from 'next/router';
 import PaginationStyle from './styles/PaginationStyle';
 import { PER_PAGE } from '../config';
 
 const Pagination = props => {
-  const { query, user, page, path } = props;
+  const { query, user, page, router } = props;
   return (
     <Query query={query} variables={user}>
       {({ data, loading, error }) => {
@@ -17,11 +18,11 @@ const Pagination = props => {
             <Link
               prefetch
               href={{
-                pathname: path,
+                pathname: router.pathname,
                 query: { page: page - 1 }
               }}
             >
-              <a aria-disabled={page <= 1}>Prev</a>
+              <a aria-disabled={page <= 1}>←</a>
             </Link>
             <p>
               Page {page} of {pages}
@@ -29,11 +30,11 @@ const Pagination = props => {
             <Link
               prefetch
               href={{
-                pathname: path,
+                pathname: router.pathname,
                 query: { page: page + 1 }
               }}
             >
-              <a aria-disabled={page >= pages}>Next</a>
+              <a aria-disabled={page >= pages}>→</a>
             </Link>
           </PaginationStyle>
         );
@@ -42,4 +43,4 @@ const Pagination = props => {
   );
 };
 
-export default Pagination;
+export default withRouter(Pagination);

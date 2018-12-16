@@ -17,7 +17,7 @@ const PhotosList = styled.div`
 `;
 
 const Photos = props => {
-  const { photoQuery, paginationQuery, user, page, path } = props;
+  const { photoQuery, paginationQuery, user, page } = props;
   if (user) {
     return (
       <Center>
@@ -43,12 +43,7 @@ const Photos = props => {
             return null;
           }}
         </Query>
-        <Pagination
-          query={paginationQuery}
-          user={user}
-          page={page}
-          path={path}
-        />
+        <Pagination query={paginationQuery} user={user} page={page} />
       </Center>
     );
   }

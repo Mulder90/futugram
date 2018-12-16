@@ -11,7 +11,6 @@ const ProfilePage = props => (
         {({ data: { me } }) => (
           <Photos
             page={parseFloat(props.query.page) || 1}
-            path="me"
             user={me}
             photoQuery={ALL_MY_PHOTOS_QUERY}
             paginationQuery={MY_PAGINATION_QUERY}
