@@ -3,10 +3,7 @@ import styled from 'styled-components';
 import Photo from './Photo';
 import Pagination from './Pagination';
 import { PER_PAGE } from '../config';
-
-const Center = styled.div`
-  text-align: center;
-`;
+import Center from './styles/Center';
 
 const PhotosList = styled.div`
   display: grid;

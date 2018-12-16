@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import Nav from './Nav';
+import User from './User';
 import { APP_NAME } from '../config';
 
 const Logo = styled.h1`
@@ -22,11 +23,23 @@ const StyledHeader = styled.header`
 
 const Header = () => (
   <StyledHeader>
-    <Logo>
-      <Link href="/">
-        <a>{APP_NAME}</a>
-      </Link>
-    </Logo>
+    <User>
+      {({ data: { me } }) => (
+        <Logo>
+          {!me && (
+            <Link href="/">
+              <a>{APP_NAME}</a>
+            </Link>
+          )}
+
+          {me && (
+            <Link href="/wall">
+              <a>{APP_NAME}</a>
+            </Link>
+          )}
+        </Logo>
+      )}
+    </User>
     <Nav />
   </StyledHeader>
 );

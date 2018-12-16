@@ -27,7 +27,7 @@ class Login extends Component {
         mutation={LOGIN_MUTATION}
         variables={this.state}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
-        awaitRefetchQueries
+        awaitRefetchQueries={true}
       >
         {(signin, { error, loading }) => (
           <React.Fragment>
@@ -40,7 +40,7 @@ class Login extends Component {
               }}
             >
               <fieldset disabled={loading} aria-busy={loading}>
-                <h2>Login to Futugram</h2>
+                <h2>Login to futugram</h2>
                 <Error error={error} />
                 <label htmlFor="email">
                   Email

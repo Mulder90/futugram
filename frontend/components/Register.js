@@ -28,7 +28,7 @@ class Register extends Component {
         mutation={REGISTER_MUTATION}
         variables={this.state}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
-        awaitRefetchQueries
+        awaitRefetchQueries={true}
       >
         {(signup, { error, loading }) => (
           <React.Fragment>
@@ -41,7 +41,7 @@ class Register extends Component {
               }}
             >
               <fieldset disabled={loading} aria-busy={loading}>
-                <h2>Creare a Futugram Account</h2>
+                <h2>Create a futugram account</h2>
                 <Error error={error} />
                 <label htmlFor="email">
                   Email
