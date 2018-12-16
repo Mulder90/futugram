@@ -6,7 +6,9 @@ const PhotoStyle = styled.div`
 
   img {
     width: 100%;
-    object-fit: cover;
+    height: 306px;
+    object-fit: contain;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
 `;
 
