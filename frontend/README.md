@@ -1,6 +1,6 @@
 # futugram - frontend
 
-Frontend of Futugram - A small web application that allows a user to upload photos and share them with the wider world.
+Frontend of Futugram - A small web application that allows users to upload photos and share them with the wider world.
 
 ## Demo
 
